@@ -1,0 +1,9 @@
+ab
+(a|b)*
+00110
+a*b*c*
+0
+1101010101
+aaabbb
+ababbaba
+abbba
