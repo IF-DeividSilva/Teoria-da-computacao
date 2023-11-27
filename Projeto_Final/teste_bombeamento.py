@@ -62,3 +62,4 @@ root.mainloop()
 
 #implementar um loop para formar as palavras da linguagem atravéz do p da palavra inserida
 # pesquisar no vetor de palavras se ela pertence a linguagem.
+#apartir disso implementar uma forma de testar a linguagem l=({a^m b^n, n>=0 e n>=0} que seria um caso de linguagem regular 
