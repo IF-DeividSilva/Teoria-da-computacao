@@ -59,3 +59,6 @@ button = tk.Button(root, text="Verificar", command=main)
 button.pack()
 
 root.mainloop()
+
+#implementar um loop para formar as palavras da linguagem atravéz do p da palavra inserida
+# pesquisar no vetor de palavras se ela pertence a linguagem.
