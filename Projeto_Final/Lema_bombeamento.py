@@ -5,24 +5,30 @@ def gerar_palavras(n):
    # Cria uma lista vazia para armazenar as palavras
    lista_palavras = []
 
-   # aux = 1 - l1
+   # verifica se a linguagem escolhida foi a l1 ou a l2 e forma o vetor de palavras pertencente a respectiva linguagem
+   # aux = 1 -> l1
    if aux == 1:
-   # Adiciona 'a' e 'b' à palavra n vezes
     for i in range(n):
-         lista_palavras.append('a' * (i + 1) + 'b' * (i + 1))
-   #aux = 2 - l2
+         lista_palavras.append('a' * (i + 1) + 'b' * (i + 1)) # forma as palavras com  a e b pertencente a l1
+         lista_palavras.append('') # adiciona a palavra vazia
+   #aux = 2 -> l2
    if aux == 2:
-    for i in range(100):
+    for i in range(n):
      for j in range(n):
-        lista_palavras.append('a' * (i + 1) + 'b' * (j + 1))
+        lista_palavras.append('a' * (i + 1) + 'b' * (j + 1)) # forma as palavras com  a e b
+        lista_palavras.append('a' * (i + 1)) # forma as palavras com apenas a
+        lista_palavras.append('b' * (i + 1)) # forma as palavras com apenas b
    return lista_palavras
 
 def lema_bombeamento(palavra):
+ #pega o valor de i do usuario (o quanto será bombeado)
+ i = int(input_i.get())
+
  # Obtém o comprimento da palavra.
- comprimento = len(palavra)
- k=0
+ comprimento = len(palavra)*i
   # Verifica se todos os caracteres pertencem ao alfabeto {a, b}.
  if not all(c in 'ab' for c in palavra):
+  result_label.config(text="CARACTER NAO PERTENCE AO ALFABETO")
   raise ValueError("Caracter nao pertence ao alfabeto")
 
  lista_palavras = gerar_palavras(comprimento)
@@ -30,17 +36,12 @@ def lema_bombeamento(palavra):
  #for p in lista_palavras:
    #print(p)
 
- # Define o valor de p como o menor divisor de comprimento que é maior ou igual a 2.
-
- #pega o valor de i do usuario 
- i = int(input_i.get())
  # Obtém as sequências u, v e z.
  u = palavra[0]
  v = palavra[1]
  z = palavra[2:] 
 
- # Verifica se a palavra montada pertence a linguagem
- palavra_montada = u + v + z
+ # forma a palavra bombeando com base no valor de i
  palavra_formada = ""
  palavra_formada += u
  for k in range(0, i):
@@ -48,6 +49,7 @@ def lema_bombeamento(palavra):
   i-=1
  palavra_formada += z
 
+ # caso a palavra bombeando esteja perteça a linguagem retorna true se não false
  if palavra_formada in lista_palavras:
   return True
  else:
@@ -63,6 +65,7 @@ def main():
  else:
   result_label.config(text="A LINGUAGEM NAO E REGULAR")
 
+# janela com titulo lema bombeamento
 root = tk.Tk()
 root.title("Lema do Bombeamento")
 root.geometry('300x150') # Define o tamanho inicial da janela
@@ -87,6 +90,7 @@ linguagem_var.trace("w", escolha_linguagem)
 optionmenu = tk.OptionMenu(root, linguagem_var, "L={ a^n b^n | n ≥ 0}", "L={ a^m b^n | n ≥ 0 e m ≥ 0}")
 optionmenu.pack()
 
+# Adiciona os campos de entrada de palavra e valor de i
 palavra_label = tk.Label(root, text="Palavra: ")
 palavra_label.pack()
 
@@ -102,8 +106,11 @@ input_i.pack()
 result_label = tk.Label(root, text="")
 result_label.pack()
 
+# Adiciona o botão de verificar
 button = tk.Button(root, text="Verificar", command=main)
 button.pack()
 
+# pra ficar em loop
 root.mainloop()
 
+#sudo apt install python3-tk
