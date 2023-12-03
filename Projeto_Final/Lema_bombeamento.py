@@ -33,9 +33,6 @@ def lema_bombeamento(palavra):
 
  lista_palavras = gerar_palavras(comprimento)
 
- #for p in lista_palavras:
-   #print(p)
-
  # Obtém as sequências u, v e z.
  u = palavra[0]
  v = palavra[1]
