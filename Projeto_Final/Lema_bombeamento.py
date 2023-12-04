@@ -23,6 +23,10 @@ def gerar_palavras(n):
 def lema_bombeamento(palavra):
  #pega o valor de i do usuario (o quanto será bombeado)
  i = int(input_i.get())
+ 
+ if palavra == "":
+   result_label.config(text="A LINGUAGEM PODE SER REGULAR")
+   return 1
 
  # Obtém o comprimento da palavra.
  comprimento = len(palavra)*i
@@ -65,7 +69,7 @@ def main():
 # janela com titulo lema bombeamento
 root = tk.Tk()
 root.title("Lema do Bombeamento")
-root.geometry('300x150') # Define o tamanho inicial da janela
+root.geometry('300x200') # Define o tamanho inicial da janela
 
 # Cria um menu de opções para escolher a linguagem
 def escolha_linguagem(*args):
