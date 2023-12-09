@@ -27,9 +27,6 @@ def lema_bombeamento(palavra):
 
  lista_palavras = gerar_palavras(comprimento)
 
- #for p in lista_palavras:
-   #print(p)
-
  # Define o valor de p como o menor divisor de comprimento que é maior ou igual a 2.
 
  #pega o valor de i do usuario 
@@ -105,5 +102,5 @@ result_label.pack()
 button = tk.Button(root, text="Verificar", command=main)
 button.pack()
 
-
 root.mainloop()
+
